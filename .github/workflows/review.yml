@@ -3,7 +3,7 @@ name: Build server and site images
 on:
   pull_request:
     branches:
-      - master
+      - main
 
 env:
   OHIO_REGISTRY_IMAGE: quay.io/operator-framework/upstream-community-operators:latest

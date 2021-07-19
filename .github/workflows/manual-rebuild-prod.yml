@@ -53,7 +53,7 @@ jobs:
           docker build -t "$OHIO_SITE_IMAGE:$OHIO_SITE_TAG" -f travis.Dockerfile .
 
       - name: Push new site image
-        if: ${{ contains(github.ref, 'refs/tags') || github.ref == 'refs/heads/master' }}
+        if: ${{ contains(github.ref, 'refs/tags') || github.ref == 'refs/heads/main' }}
         run: |
           export OHIO_SITE_TAG=$(bash -c '
             echo v4;
