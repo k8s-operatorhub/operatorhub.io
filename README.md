@@ -13,7 +13,7 @@ One needs to checkout `main` branch
 git checkout main
 ```
 
-Then we create tag where we increase version nummber each time. In this example `v9`
+Then one can create tag. It is increased by one version nummber each time. In this example `v9`
 
 ```
 git tag -a -m "Release v9" v9
