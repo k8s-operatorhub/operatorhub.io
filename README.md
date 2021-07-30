@@ -17,6 +17,7 @@ Then one can create tag. It is increased by one version nummber each time. In th
 
 ```
 git tag -a -m "Release v9" v9
+git push --tags
 ```
 
 Then test when page is ok. If it is fine then one have to create `latest` tag to point to `v9` so pipeline from `https://github.com/k8s-operatorhub/community-operators` will trigger it next time new operator is merged.
