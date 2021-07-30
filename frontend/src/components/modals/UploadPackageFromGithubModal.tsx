@@ -31,8 +31,8 @@ class UploadPackageFromGithubModal extends React.PureComponent<UploadPackageFrom
 
 
   state: UploadPackageFromGithubModalState = {
-    repo: 'operator-framework/community-operators',
-    path: 'upstream-community-operators/etcd',
+    repo: 'k8s-operatorhub/community-operators',
+    path: 'operators/etcd',
     branch: 'master',
     validFields: {
       repo: true,
@@ -273,7 +273,7 @@ class UploadPackageFromGithubModal extends React.PureComponent<UploadPackageFrom
                   onChange={this.updateField}
                   onBlur={this.commitField}
                   onKeyDown={this.onKeyDown}
-                  placeholder="e.g. operator-framework/operatorhub.io"
+                  placeholder="e.g. k8s-operatorhub/operatorhub.io"
                   value={repo}
                 />
               </OperatorInputWrapper>
@@ -292,7 +292,7 @@ class UploadPackageFromGithubModal extends React.PureComponent<UploadPackageFrom
                   onChange={this.updateField}
                   onBlur={this.commitField}
                   onKeyDown={this.onKeyDown}
-                  placeholder="e.g. upstream-community-operators/etcd"
+                  placeholder="e.g. operators/etcd"
                   value={path}
                 />
               </OperatorInputWrapper>

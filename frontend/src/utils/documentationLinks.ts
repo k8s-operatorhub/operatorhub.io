@@ -1,7 +1,7 @@
-export const operatorsFramework = 'https://github.com/operator-framework';
+export const operatorsFramework = 'https://github.com/k8s-operatorhub';
 export const operatorsRepo = `${operatorsFramework}/community-operators`;
-export const operatorsDocumentation = `https://operator-framework.github.io/community-operators`
-export const contributions = `${operatorsRepo}/tree/master/upstream-community-operators`;
+export const operatorsDocumentation = `https://k8s-operatorhub.github.io/community-operators`
+export const contributions = `${operatorsRepo}/tree/main/operators`;
 export const operatorsRepoBeforePR = `${operatorsDocumentation}/contributing-prerequisites`;
 export const operatorsRepoRequirements = `${operatorsDocumentation}/packaging-operator`;
 export const operatorSdk = `${operatorsFramework}/operator-sdk`;
