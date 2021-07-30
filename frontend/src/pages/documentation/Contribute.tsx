@@ -263,7 +263,7 @@ const Contribute: React.FC<ContributePageProps> = ({ history, ...props }) => {
       content: (
         <p>
           When you have completed drafting your catalog data, create a pull request with your Operator catalog data only
-          in the <code>upstream-community-operators</code> subdirectory. Your manifests will be checked for syntax,
+          in the <code>operators</code> subdirectory. Your manifests will be checked for syntax,
           completeness, and functional deployment. Any enhancements will be discussed in the PR. Upon success we will
           merge it and your contribution is complete.
         </p>

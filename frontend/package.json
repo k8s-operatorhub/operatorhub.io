@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "OperatorHub.io showcases community operators and provides information on operators and how to contribute.",
   "main": "index.js",
-  "repository": "https://github.com/operator-framework/operatorhub.io.git",
+  "repository": "https://github.com/k8s-operatorhub/operatorhub.io.git",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.7.5",
