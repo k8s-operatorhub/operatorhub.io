@@ -5,7 +5,34 @@
 Operators deliver the automation advantages of cloud services like provisioning, scaling, and backup/restore while being
 able to run anywhere that Kubernetes can run.
 
+## Releasing OperatorHub.io
+
+One needs to checkout `main` branch
+
+```
+git checkout main
+```
+
+Then one can create tag. It is increased by one version nummber each time. In this example `v9`
+
+```
+git tag -a -m "Release v9" v9
+git push --tags
+```
+
+Then test when page is ok. If it is fine then one have to create `latest` tag to point to `v9` so pipeline from `https://github.com/k8s-operatorhub/community-operators` will trigger it next time new operator is merged.
+
+To create `latest` tag one have to delete it and then force push it. This is done by
+
+```
+git checkout v9
+git tag -d latest
+git tag -a -m "Release v9" latest
+git push --tags --force
+```
+
 ### Build
+
 In order to build and run the web application in the same way as it does in production follow the next steps.
 
 ##### Build Frontend
@@ -18,6 +45,7 @@ popd
 ```
 
 ##### Build Backend
+
 ```
 $ pushd backend
 npm install
@@ -25,23 +53,25 @@ npm run build
 ```
 
 ### Running local server
+
 In server directory
+
 ```
 $ npm run server
 ```
 
 Other way to do this is to use Docker image in the repo root folder
+
 ```
 $ docker build -t operatorhub .
 docker run operatorhub
 ```
 
-
 ### Contributing
 
 ##### Running in Development Mode
-This is prefered way when working on front end code. You do not have to care about backend data and front end web server is running in watch mode - it updates when any of the source files is modified and saved.
 
+This is prefered way when working on front end code. You do not have to care about backend data and front end web server is running in watch mode - it updates when any of the source files is modified and saved.
 
 ###### Running the local UI in dev mode
 
@@ -51,7 +81,6 @@ npm install
 npm start
 http://0.0.0.0:9060/
 ```
-
 
 ##### Contributing Code
 
@@ -77,11 +106,13 @@ $ git checkout -b my-branch -t upstream/master
 3. Make your changes and commit to your local branch
 
 Verify there are no lint errors
+
 ```text
 $ npm run lint
 ```
 
 Add and Commit your files
+
 ```text
 $ git add <files to be committed>
 $ git commit
