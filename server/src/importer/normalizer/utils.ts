@@ -43,19 +43,24 @@ export const normalizeCapabilityLevel = (capability: string) => {
  * @param operator 
  */
 const getExampleYAML = (kind: string, operator: Operator): AlmExample| null => {
-    const examples: string = get(operator, 'metadata.annotations.alm-examples');
+    const examples_: string = get(operator, 'metadata.annotations.alm-examples');
+    if (examples_) {
+        let regex = /\,(?!\s*?[\{\[\"\'\w])/g;
+        let examples = examples_.replace(regex, '');
 
-    if (examples) {
-        try {
-            const yamlExamples: any[] = JSON.parse(examples);
-            return yamlExamples.find(example => example.kind === kind);
+        if (examples) {
+            try {
+                const yamlExamples: any[] = JSON.parse(examples);
+                return yamlExamples.find(example => example.kind === kind);
 
-        } catch (e) {
-            Logger.error(`getExampleYAML > failed to parse example for CRD ${kind}`, e);
+            } catch (e) {
+                Logger.error(`getExampleYAML > failed to parse example for CRD ${kind}`, e);
+            }
         }
     }
     return null;
 };
+
 
 /**
  * Normalize single CRD
