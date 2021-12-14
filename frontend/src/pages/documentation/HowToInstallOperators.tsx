@@ -6,7 +6,7 @@ import { ExternalLink } from '../../components/ExternalLink';
 import DocumentationPage from '../../components/page/DocumentationPage';
 import { olm, olmArchitecture, manageOperatorWithOlm, operatorGroupDesign } from '../../utils/documentationLinks';
 
-export interface HowToInstallOperatorsPageProps{
+export interface HowToInstallOperatorsPageProps {
   history: History
 }
 
@@ -45,6 +45,9 @@ const HowToInstallOperators: React.FC<HowToInstallOperatorsPageProps> = ({ histo
           </p>
           <p className="oh-documentation-page__code_snippet">
             <code>
+              kubectl create -f
+              https://raw.githubusercontent.com/operator-framework/operator-lifecycle-manager/master/deploy/upstream/quickstart/crds.yaml
+              <br />
               kubectl create -f
               https://raw.githubusercontent.com/operator-framework/operator-lifecycle-manager/master/deploy/upstream/quickstart/olm.yaml
             </code>
