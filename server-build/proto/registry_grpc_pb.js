@@ -114,6 +114,17 @@ function deserialize_api_GetReplacementRequest(buffer_arg) {
   return registry_pb.GetReplacementRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_api_ListBundlesRequest(arg) {
+  if (!(arg instanceof registry_pb.ListBundlesRequest)) {
+    throw new Error('Expected argument of type api.ListBundlesRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_api_ListBundlesRequest(buffer_arg) {
+  return registry_pb.ListBundlesRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_api_ListPackageRequest(arg) {
   if (!(arg instanceof registry_pb.ListPackageRequest)) {
     throw new Error('Expected argument of type api.ListPackageRequest');
@@ -245,6 +256,17 @@ var RegistryService = exports.RegistryService = {
     responseType: registry_pb.Bundle,
     requestSerialize: serialize_api_GetDefaultProviderRequest,
     requestDeserialize: deserialize_api_GetDefaultProviderRequest,
+    responseSerialize: serialize_api_Bundle,
+    responseDeserialize: deserialize_api_Bundle,
+  },
+  listBundles: {
+    path: '/api.Registry/ListBundles',
+    requestStream: false,
+    responseStream: true,
+    requestType: registry_pb.ListBundlesRequest,
+    responseType: registry_pb.Bundle,
+    requestSerialize: serialize_api_ListBundlesRequest,
+    requestDeserialize: deserialize_api_ListBundlesRequest,
     responseSerialize: serialize_api_Bundle,
     responseDeserialize: deserialize_api_Bundle,
   },
