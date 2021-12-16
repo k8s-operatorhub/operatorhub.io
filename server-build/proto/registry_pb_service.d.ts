@@ -85,6 +85,15 @@ type RegistryGetDefaultBundleThatProvides = {
   readonly responseType: typeof registry_pb.Bundle;
 };
 
+type RegistryListBundles = {
+  readonly methodName: string;
+  readonly service: typeof Registry;
+  readonly requestStream: false;
+  readonly responseStream: true;
+  readonly requestType: typeof registry_pb.ListBundlesRequest;
+  readonly responseType: typeof registry_pb.Bundle;
+};
+
 export class Registry {
   static readonly serviceName: string;
   static readonly ListPackages: RegistryListPackages;
@@ -96,6 +105,7 @@ export class Registry {
   static readonly GetChannelEntriesThatProvide: RegistryGetChannelEntriesThatProvide;
   static readonly GetLatestChannelEntriesThatProvide: RegistryGetLatestChannelEntriesThatProvide;
   static readonly GetDefaultBundleThatProvides: RegistryGetDefaultBundleThatProvides;
+  static readonly ListBundles: RegistryListBundles;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -179,5 +189,6 @@ export class RegistryClient {
     requestMessage: registry_pb.GetDefaultProviderRequest,
     callback: (error: ServiceError|null, responseMessage: registry_pb.Bundle|null) => void
   ): UnaryResponse;
+  listBundles(requestMessage: registry_pb.ListBundlesRequest, metadata?: grpc.Metadata): ResponseStream<registry_pb.Bundle>;
 }
 

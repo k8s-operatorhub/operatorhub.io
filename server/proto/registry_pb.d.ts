@@ -77,6 +77,86 @@ export namespace Package {
   }
 }
 
+export class GroupVersionKind extends jspb.Message {
+  getGroup(): string;
+  setGroup(value: string): void;
+
+  getVersion(): string;
+  setVersion(value: string): void;
+
+  getKind(): string;
+  setKind(value: string): void;
+
+  getPlural(): string;
+  setPlural(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GroupVersionKind.AsObject;
+  static toObject(includeInstance: boolean, msg: GroupVersionKind): GroupVersionKind.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GroupVersionKind, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GroupVersionKind;
+  static deserializeBinaryFromReader(message: GroupVersionKind, reader: jspb.BinaryReader): GroupVersionKind;
+}
+
+export namespace GroupVersionKind {
+  export type AsObject = {
+    group: string,
+    version: string,
+    kind: string,
+    plural: string,
+  }
+}
+
+export class Dependency extends jspb.Message {
+  getType(): string;
+  setType(value: string): void;
+
+  getValue(): string;
+  setValue(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Dependency.AsObject;
+  static toObject(includeInstance: boolean, msg: Dependency): Dependency.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Dependency, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Dependency;
+  static deserializeBinaryFromReader(message: Dependency, reader: jspb.BinaryReader): Dependency;
+}
+
+export namespace Dependency {
+  export type AsObject = {
+    type: string,
+    value: string,
+  }
+}
+
+export class Property extends jspb.Message {
+  getType(): string;
+  setType(value: string): void;
+
+  getValue(): string;
+  setValue(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Property.AsObject;
+  static toObject(includeInstance: boolean, msg: Property): Property.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Property, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Property;
+  static deserializeBinaryFromReader(message: Property, reader: jspb.BinaryReader): Property;
+}
+
+export namespace Property {
+  export type AsObject = {
+    type: string,
+    value: string,
+  }
+}
+
 export class Bundle extends jspb.Message {
   getCsvname(): string;
   setCsvname(value: string): void;
@@ -95,6 +175,43 @@ export class Bundle extends jspb.Message {
   setObjectList(value: Array<string>): void;
   addObject(value: string, index?: number): string;
 
+  getBundlepath(): string;
+  setBundlepath(value: string): void;
+
+  clearProvidedapisList(): void;
+  getProvidedapisList(): Array<GroupVersionKind>;
+  setProvidedapisList(value: Array<GroupVersionKind>): void;
+  addProvidedapis(value?: GroupVersionKind, index?: number): GroupVersionKind;
+
+  clearRequiredapisList(): void;
+  getRequiredapisList(): Array<GroupVersionKind>;
+  setRequiredapisList(value: Array<GroupVersionKind>): void;
+  addRequiredapis(value?: GroupVersionKind, index?: number): GroupVersionKind;
+
+  getVersion(): string;
+  setVersion(value: string): void;
+
+  getSkiprange(): string;
+  setSkiprange(value: string): void;
+
+  clearDependenciesList(): void;
+  getDependenciesList(): Array<Dependency>;
+  setDependenciesList(value: Array<Dependency>): void;
+  addDependencies(value?: Dependency, index?: number): Dependency;
+
+  clearPropertiesList(): void;
+  getPropertiesList(): Array<Property>;
+  setPropertiesList(value: Array<Property>): void;
+  addProperties(value?: Property, index?: number): Property;
+
+  getReplaces(): string;
+  setReplaces(value: string): void;
+
+  clearSkipsList(): void;
+  getSkipsList(): Array<string>;
+  setSkipsList(value: Array<string>): void;
+  addSkips(value: string, index?: number): string;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Bundle.AsObject;
   static toObject(includeInstance: boolean, msg: Bundle): Bundle.AsObject;
@@ -112,6 +229,15 @@ export namespace Bundle {
     channelname: string,
     csvjson: string,
     objectList: Array<string>,
+    bundlepath: string,
+    providedapisList: Array<GroupVersionKind.AsObject>,
+    requiredapisList: Array<GroupVersionKind.AsObject>,
+    version: string,
+    skiprange: string,
+    dependenciesList: Array<Dependency.AsObject>,
+    propertiesList: Array<Property.AsObject>,
+    replaces: string,
+    skipsList: Array<string>,
   }
 }
 
@@ -159,6 +285,22 @@ export class ListPackageRequest extends jspb.Message {
 }
 
 export namespace ListPackageRequest {
+  export type AsObject = {
+  }
+}
+
+export class ListBundlesRequest extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ListBundlesRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ListBundlesRequest): ListBundlesRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ListBundlesRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ListBundlesRequest;
+  static deserializeBinaryFromReader(message: ListBundlesRequest, reader: jspb.BinaryReader): ListBundlesRequest;
+}
+
+export namespace ListBundlesRequest {
   export type AsObject = {
   }
 }
