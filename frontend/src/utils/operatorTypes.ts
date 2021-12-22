@@ -42,6 +42,7 @@ export type OperatorMetadataAnnotations = {
     support: string
     capabilities: string
     repository: string
+    k8sMaxVersion: string
 }
 
 export type OperatorMetadata = {
@@ -210,6 +211,7 @@ export type NormalizedOperatorPreview = {
     longDescription: string
     provider: string
     version: string
+    k8sMaxVersion: string
     versionForCompare: string
     capabilityLevel: string
     links: OperatorLink[]

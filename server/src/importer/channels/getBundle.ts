@@ -106,6 +106,7 @@ export async function getReplacedBundles(bundlesMap: OperatorsMap, packageName: 
         latestBundle = await getBundleByName(packageName, channelName, replacedCsvName);
 
         if (latestBundle !== null) {
+            if (latestBundle.csvjson === '') return bundlesMap;
             const csv: Operator = JSON.parse(latestBundle.csvjson);
             replacedBundleName = csv.spec.replaces;
 

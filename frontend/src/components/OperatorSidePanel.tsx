@@ -150,6 +150,19 @@ class OperatorSidePanel extends React.PureComponent<OperatorSidePanelProps, Oper
     </span>
   );
 
+  renderK8MaxVersion = (k8sMaxVersion: string = '') => {
+    console.log(k8sMaxVersion)
+    if (k8sMaxVersion.length === 0) {
+      return <div>Any</div>;
+    }
+
+    return (
+      <React.Fragment>
+          <div key={k8sMaxVersion}>{k8sMaxVersion}</div>
+      </React.Fragment>
+    );
+  };
+
   renderCategories = (categories: string[] = []) => {
     if (categories.length === 0) {
       return <div>Other</div>;
@@ -179,6 +192,7 @@ class OperatorSidePanel extends React.PureComponent<OperatorSidePanelProps, Oper
 
   render() {
     const { operator, showInstall } = this.props;
+    console.log(operator.k8sMaxVersion)
 
     const {
       name,
@@ -192,7 +206,8 @@ class OperatorSidePanel extends React.PureComponent<OperatorSidePanelProps, Oper
       containerImage,
       createdAt,
       maintainers,
-      categories
+      categories,
+      k8sMaxVersion
     } = operator;
 
     const activeChannel = _.find(channels, { name: channel });    
@@ -278,6 +293,7 @@ class OperatorSidePanel extends React.PureComponent<OperatorSidePanelProps, Oper
         <PropertiesSidePanel>
           {this.renderPropertyItem('Channel', this.renderChannel(channels, channel || ''))}
           {this.renderPropertyItem('Version', this.renderVersion(versions, version, currentVersion))}
+          {this.renderPropertyItem('Max k8s Version', this.renderK8MaxVersion(k8sMaxVersion))}
           {this.renderPropertyItem(capabilityLevelLabel, this.renderCapabilityLevel(capabilityLevel))}
           {this.renderPropertyItem('Provider', provider)}
           {this.renderPropertyItem('Links', this.renderLinks(links))}
