@@ -293,7 +293,8 @@ class OperatorSidePanel extends React.PureComponent<OperatorSidePanelProps, Oper
         <PropertiesSidePanel>
           {this.renderPropertyItem('Channel', this.renderChannel(channels, channel || ''))}
           {this.renderPropertyItem('Version', this.renderVersion(versions, version, currentVersion))}
-          {(k8sMaxVersion !== undefined) && (k8sMaxVersion !== '') && this.renderPropertyItem('Max k8s Version', this.renderK8MaxVersion(k8sMaxVersion))}
+          {/* {(k8sMaxVersion !== undefined) && (k8sMaxVersion !== '') && this.renderPropertyItem('Max k8s Version', this.renderK8MaxVersion(k8sMaxVersion))} */}
+          {(k8sMaxVersion) && this.renderPropertyItem('Max k8s Version', this.renderK8MaxVersion(k8sMaxVersion))}
           {this.renderPropertyItem(capabilityLevelLabel, this.renderCapabilityLevel(capabilityLevel))}
           {this.renderPropertyItem('Provider', provider)}
           {this.renderPropertyItem('Links', this.renderLinks(links))}
