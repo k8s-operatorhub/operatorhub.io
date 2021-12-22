@@ -209,7 +209,7 @@ class OperatorSidePanel extends React.PureComponent<OperatorSidePanelProps, Oper
       categories,
       k8sMaxVersion
     } = operator;
-    console.log(k8sMaxVersion)
+
     const activeChannel = _.find(channels, { name: channel });    
     const versions = _.get(activeChannel, 'versions', [{name ,version: version}]);
     const currentVersion = _.find(versions, { name: _.get(activeChannel, 'currentCSV') });
