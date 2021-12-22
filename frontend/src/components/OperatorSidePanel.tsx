@@ -192,7 +192,7 @@ class OperatorSidePanel extends React.PureComponent<OperatorSidePanelProps, Oper
 
   render() {
     const { operator, showInstall } = this.props;
-    console.log(operator.k8sMaxVersion)
+    // console.log(operator.k8sMaxVersion)
 
     const {
       name,
@@ -209,7 +209,7 @@ class OperatorSidePanel extends React.PureComponent<OperatorSidePanelProps, Oper
       categories,
       k8sMaxVersion
     } = operator;
-
+    console.log(k8sMaxVersion)
     const activeChannel = _.find(channels, { name: channel });    
     const versions = _.get(activeChannel, 'versions', [{name ,version: version}]);
     const currentVersion = _.find(versions, { name: _.get(activeChannel, 'currentCSV') });
@@ -293,7 +293,7 @@ class OperatorSidePanel extends React.PureComponent<OperatorSidePanelProps, Oper
         <PropertiesSidePanel>
           {this.renderPropertyItem('Channel', this.renderChannel(channels, channel || ''))}
           {this.renderPropertyItem('Version', this.renderVersion(versions, version, currentVersion))}
-          {this.renderPropertyItem('Max k8s Version', this.renderK8MaxVersion(k8sMaxVersion))}
+          {(k8sMaxVersion !== undefined) && (k8sMaxVersion !== '') && this.renderPropertyItem('Max k8s Version', this.renderK8MaxVersion(k8sMaxVersion))}
           {this.renderPropertyItem(capabilityLevelLabel, this.renderCapabilityLevel(capabilityLevel))}
           {this.renderPropertyItem('Provider', provider)}
           {this.renderPropertyItem('Links', this.renderLinks(links))}
