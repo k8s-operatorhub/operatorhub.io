@@ -121,6 +121,7 @@ export const normalizeOperator = (operator: operatorTypes.Operator) => {
     longDescription,
     provider: _.get(spec, 'provider.name'),
     version: spec ? spec.version : '',
+    k8sMaxVersion: annotations['operatorhub.io/ui-metadata-max-k8s-version'] || '',
     versionForCompare: normalizeVersion(spec ? spec.version : ''),
     capabilityLevel: normalizeCapabilityLevel(annotations.capabilities || ''),
     links: spec ? spec.links : [],
@@ -156,6 +157,7 @@ const defaultOperator: operatorTypes.Operator = {
     namespace: 'placeholder',
     annotations: {
       'alm-examples': `[${JSON.stringify(getDefaultAlmExample())}]`,
+      k8sMaxVersion: '',
       categories: '',
       certified: 'false',
       createdAt: '',

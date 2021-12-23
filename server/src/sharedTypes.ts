@@ -47,6 +47,7 @@ export interface NormalizedOperator {
     provider: string
     version: string
     versionForCompare: string
+    k8sMaxVersion: string
     replaces: string
     capabilityLevel: string
     links: OperatorLink[]
