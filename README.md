@@ -64,7 +64,7 @@ Other way to do this is to use Docker image in the repo root folder
 
 ```
 $ docker build -t operatorhub .
-docker run operatorhub
+docker run -ti -p 8080:8080 operatorhub
 ```
 
 ### Contributing
