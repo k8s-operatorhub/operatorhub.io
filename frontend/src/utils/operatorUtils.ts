@@ -121,7 +121,7 @@ export const normalizeOperator = (operator: operatorTypes.Operator) => {
     longDescription,
     provider: _.get(spec, 'provider.name'),
     version: spec ? spec.version : '',
-    k8sMinVersion: operator.metadata['minKubeVersion'] || '',
+    k8sMinVersion: spec ? spec['minKubeVersion'] || '' : '',
     k8sMaxVersion: annotations['operatorhub.io/ui-metadata-max-k8s-version'] || '',
     versionForCompare: normalizeVersion(spec ? spec.version : ''),
     capabilityLevel: normalizeCapabilityLevel(annotations.capabilities || ''),
