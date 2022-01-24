@@ -42,6 +42,7 @@ export type OperatorMetadataAnnotations = {
     support: string
     capabilities: string
     repository: string
+    k8sMinVersion: string
     k8sMaxVersion: string
 }
 
@@ -211,6 +212,7 @@ export type NormalizedOperatorPreview = {
     longDescription: string
     provider: string
     version: string
+    k8sMinVersion: string
     k8sMaxVersion: string
     versionForCompare: string
     capabilityLevel: string

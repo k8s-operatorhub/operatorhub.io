@@ -65,6 +65,7 @@ async function normalizeOperator(operator: Operator, packageName: string, channe
       provider: spec.provider && spec.provider.name || '',
       version: spec.version,
       versionForCompare: normalizeVersion(spec.version),
+      k8sMinVersion: metadata['minKubeVersion'] || '',
       k8sMaxVersion: annotations['operatorhub.io/ui-metadata-max-k8s-version'] || '',
       replaces: spec.replaces || '',
       capabilityLevel: normalizeCapabilityLevel(annotations.capabilities || ''),
