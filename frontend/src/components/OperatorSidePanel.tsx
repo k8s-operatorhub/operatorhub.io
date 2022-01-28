@@ -150,15 +150,14 @@ class OperatorSidePanel extends React.PureComponent<OperatorSidePanelProps, Oper
     </span>
   );
 
-  renderK8MaxVersion = (k8sMaxVersion: string = '') => {
-    console.log(k8sMaxVersion)
-    if (k8sMaxVersion.length === 0) {
-      return <div>Any</div>;
+  renderK8Version = (k8sVersion: string = '') => {
+    if (k8sVersion.length === 0) {
+      return <div>-</div>;
     }
 
     return (
       <React.Fragment>
-          <div key={k8sMaxVersion}>{k8sMaxVersion}</div>
+          <div key={k8sVersion}>{k8sVersion}</div>
       </React.Fragment>
     );
   };
@@ -192,7 +191,6 @@ class OperatorSidePanel extends React.PureComponent<OperatorSidePanelProps, Oper
 
   render() {
     const { operator, showInstall } = this.props;
-    // console.log(operator.k8sMaxVersion)
 
     const {
       name,
@@ -207,6 +205,7 @@ class OperatorSidePanel extends React.PureComponent<OperatorSidePanelProps, Oper
       createdAt,
       maintainers,
       categories,
+      k8sMinVersion,
       k8sMaxVersion
     } = operator;
 
@@ -293,8 +292,8 @@ class OperatorSidePanel extends React.PureComponent<OperatorSidePanelProps, Oper
         <PropertiesSidePanel>
           {this.renderPropertyItem('Channel', this.renderChannel(channels, channel || ''))}
           {this.renderPropertyItem('Version', this.renderVersion(versions, version, currentVersion))}
-          {/* {(k8sMaxVersion !== undefined) && (k8sMaxVersion !== '') && this.renderPropertyItem('Max k8s Version', this.renderK8MaxVersion(k8sMaxVersion))} */}
-          {(k8sMaxVersion) && this.renderPropertyItem('Max k8s Version', this.renderK8MaxVersion(k8sMaxVersion))}
+          {(k8sMinVersion) && this.renderPropertyItem('Min k8s Version', this.renderK8Version(k8sMinVersion))}
+          {(k8sMaxVersion) && this.renderPropertyItem('Max k8s Version', this.renderK8Version(k8sMaxVersion))}
           {this.renderPropertyItem(capabilityLevelLabel, this.renderCapabilityLevel(capabilityLevel))}
           {this.renderPropertyItem('Provider', provider)}
           {this.renderPropertyItem('Links', this.renderLinks(links))}
