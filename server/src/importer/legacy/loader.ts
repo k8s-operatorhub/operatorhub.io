@@ -42,7 +42,7 @@ const extractOperatorVersionData = (versionDirPath, fileName) => {
   try {
     content = yaml.safeLoad(fs.readFileSync(filePath));
     fileType = getFileType(content);
-  } catch (e) {
+  } catch (e: any) {
     console.error(`ERROR: Unable to parse ${fileName}`);
     console.error(e.message);
     return null;
@@ -106,7 +106,7 @@ const extractOperatorData = (dirPath, fileName) => {
   try {
     content = yaml.safeLoad(fs.readFileSync(filePath));
     fileType = getFileType(content);
-  } catch (e) {
+  } catch (e: any) {
     console.error(`ERROR: Unable to parse ${fileName}`);
     console.error(e.message);
     return {
@@ -163,7 +163,7 @@ export const loadOperators = async () => {
         operatorCSVs = operatorCSVs.concat(csvFiles);
       });
 
-      if (operatorPackage) {     
+      if (operatorPackage) {
 
         // add package data to operator
         operatorCSVs.forEach(operator => {
@@ -175,7 +175,7 @@ export const loadOperators = async () => {
         });
 
         if (operatorCSVs.length > 0) {
-          
+
           packages.push(operatorPackage);
         } else {
           console.warn(`No valid CSVs found for operator ${dir}. Skipping this package.`);
