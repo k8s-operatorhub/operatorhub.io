@@ -8,7 +8,7 @@
         "google-protobuf": "~3.8.0",
         "grpc": "~1.24.5",
         "lodash": "^4.17.19",
-        "sharp": "^0.23.0"
+        "sharp": "^0.30.5"
     },
     "devDependencies": {
         "@improbable-eng/grpc-web": "^0.11.0",
