@@ -20,7 +20,7 @@ RUN mkdir -p ${APP_ROOT}/server/data/community-operators \
     && git clone --depth 1 -b $OPERATORS_BRANCH $OPERATORS_REPO
 
 # build frontend dist files
-FROM node:14.8.0-alpine as alpine_frontend_builder
+FROM node:16.15.1-alpine as alpine_frontend_builder
 
 ENV APP_ROOT=/app
 
@@ -33,7 +33,7 @@ COPY frontend/ ${APP_ROOT}/frontend
 RUN cd ${APP_ROOT}/frontend; npm install \
     && npm run-script build
 
-FROM node:14.8.0-buster-slim
+FROM node:16.15.1-buster-slim
 #FROM node:10.19.0-alpine
 
 ENV APP_ROOT=/app
