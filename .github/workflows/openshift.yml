@@ -17,7 +17,6 @@ env:
 jobs:
   build:
     name: Build site image
-    id: build-site
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -79,7 +78,6 @@ jobs:
 
   deploy:
     name: Deploy site
-    id: deploy-site
     needs: build
     runs-on: ubuntu-latest
     env:
@@ -116,7 +114,7 @@ jobs:
 
   slack-notification:
       name: "Slack notification"
-      needs: [ build-site, deploy-site ]
+      needs: [ build, deploy ]
 
       if: failure()
       runs-on: ubuntu-latest
