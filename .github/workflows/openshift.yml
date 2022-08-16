@@ -17,6 +17,7 @@ env:
 jobs:
   build:
     name: Build site image
+    id: build-site
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -78,6 +79,7 @@ jobs:
 
   deploy:
     name: Deploy site
+    id: deploy-site
     needs: build
     runs-on: ubuntu-latest
     env:
@@ -111,3 +113,22 @@ jobs:
         if: ${{ contains(github.ref, 'refs/tags') }}
         run: |
           ./invalidate.sh
+
+  slack-notification:
+      name: "Slack notification"
+      needs: [ build-site, deploy-site ]
+
+      if: failure()
+      runs-on: ubuntu-latest
+      steps:
+        - name: Report Status
+          uses: ravsamhq/notify-slack-action@master
+          with:
+            notification_title: 'Operatorhub.io deploy failed: ${{ needs.pr-check.outputs.opp_pr_title }}'
+            footer: 'monitoring'
+  #          status: ${{ needs.pr-check.result }}
+            status: 'failure'
+            notify_when: 'failure'
+          env:
+            SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
+          continue-on-error: true
