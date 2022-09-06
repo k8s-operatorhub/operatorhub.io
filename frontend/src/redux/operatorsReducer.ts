@@ -22,7 +22,7 @@ const initialState: OperatorsReducersState = {
   fulfilled: false,
   operators: [],
   operator: {} as any,
-  olmVersion: '0.14.1',
+  olmVersion: '0.22.0',
   olmVersionUpdated: false
 };
 
