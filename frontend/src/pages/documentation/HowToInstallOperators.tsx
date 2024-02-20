@@ -4,7 +4,7 @@ import { History } from 'history';
 
 import { ExternalLink } from '../../components/ExternalLink';
 import DocumentationPage from '../../components/page/DocumentationPage';
-import { olm, olmArchitecture, manageOperatorWithOlm, operatorGroupDesign } from '../../utils/documentationLinks';
+import { olm, olmArchitecture, manageOperatorWithOlm, operatorGroupDesign, olmLatest } from '../../utils/documentationLinks';
 
 export interface HowToInstallOperatorsPageProps {
   history: History
@@ -41,15 +41,13 @@ const HowToInstallOperators: React.FC<HowToInstallOperatorsPageProps> = ({ histo
         <React.Fragment>
           <p>
             A quick way to install OLM on a Kubernetes cluster with default settings and appropriate permission is by
-            running this command:
+            running the scripted install step from the{' '}<ExternalLink href={olmLatest} text="operator-lifecycle-manager latest release" />.  For example, from v0.26.0 the commands are:
           </p>
           <p className="oh-documentation-page__code_snippet">
             <code>
-              kubectl create -f
-              https://raw.githubusercontent.com/operator-framework/operator-lifecycle-manager/master/deploy/upstream/quickstart/crds.yaml
-              <br />
-              kubectl create -f
-              https://raw.githubusercontent.com/operator-framework/operator-lifecycle-manager/master/deploy/upstream/quickstart/olm.yaml
+              curl -L https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.26.0/install.sh -o install.sh
+              chmod +x install.sh
+              ./install.sh v0.26.0
             </code>
           </p>
           <p>
