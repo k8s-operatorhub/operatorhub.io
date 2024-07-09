@@ -198,6 +198,7 @@ export type NormalizedOperatorChannel = {
 export type NormalizedCrdPreview = {
     name: string
     kind: string
+    version: string
     displayName: string
     description: string
     yamlExample: object | null
