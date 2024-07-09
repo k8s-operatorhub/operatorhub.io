@@ -612,7 +612,7 @@ class OperatorHub extends React.Component {
         {_.map(this.sortCategories(categories), category => (
           <div key={category} className={`oh-category-item ${category === selectedCategory ? 'selected' : ''}`}>
             <button className="oh-category-item__select" onClick={e => this.categorySelect(e, category)}>
-              {category.length == 0 ? 'All' : category}
+              {category.length === 0 ? 'All' : category}
             </button>
             {category === selectedCategory && (
               <button className="oh-category-item__deselect" onClick={e => this.categorySelect(e, '')}>
@@ -890,7 +890,4 @@ const mapStateToProps = state => ({
   ...state.viewState
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(OperatorHub);
+export default connect(mapStateToProps, mapDispatchToProps)(OperatorHub);

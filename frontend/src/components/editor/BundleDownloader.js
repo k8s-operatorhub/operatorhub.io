@@ -259,7 +259,4 @@ const mapStateToProps = state => ({
   operatorPackage: state.editorState.operatorPackage
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(OperatorBundleDownloader);
+export default connect(mapStateToProps, mapDispatchToProps)(OperatorBundleDownloader);
