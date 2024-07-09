@@ -40,7 +40,7 @@ const normalizeCapabilityLevel = (capability: string) => {
 /**
  * Search for deployment example by kind
  */
-const getExampleYAML = (kind: string, operator: operatorTypes.Operator): object | null => {
+const getExampleYAML = (kind: string, version: string, operator: operatorTypes.Operator): object | null => {
   const examples = _.get(operator, 'metadata.annotations.alm-examples');
   if (!examples) {
     return null;
@@ -53,7 +53,13 @@ const getExampleYAML = (kind: string, operator: operatorTypes.Operator): object 
       yamlExamples = JSON.parse(examples);
     }
 
-    return _.find(yamlExamples, { kind });
+    return _.find(yamlExamples, (resource) => {
+      const apiVersionSplit = resource.apiVersion?.split('/');
+      if (apiVersionSplit.length > 2) {
+        throw new Error("Example resource YAML has invalid apiVersion.")
+      }
+      return resource?.kind === kind && (apiVersionSplit.length === 2? apiVersionSplit[1]: resource.apiVersion) === version;
+    });
   } catch (e) {
     return null;
   }
@@ -75,12 +81,13 @@ export const mergeDescriptions = (operator: operatorTypes.Operator) => {
 
 
 
-const normalizeCRD = (crd: operatorTypes.CustomResourceFile, operator: operatorTypes.Operator): operatorTypes.NormalizedCrdPreview => ({
+const normalizeCRD = (crd: operatorTypes.OperatorOwnedCrd, operator: operatorTypes.Operator): operatorTypes.NormalizedCrdPreview => ({
   name: _.get(crd, 'name', 'Name Not Available'),
   kind: crd.kind,
+  version: crd.version,
   displayName: _.get(crd, 'displayName', 'Name Not Available'),
   description: _.get(crd, 'description', 'No description available'),
-  yamlExample: getExampleYAML(crd.kind, operator)
+  yamlExample: getExampleYAML(crd.kind, crd.version, operator)
 });
 
 const normalizeCRDs = (operator: operatorTypes.Operator) => {
