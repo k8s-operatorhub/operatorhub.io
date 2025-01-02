@@ -5,7 +5,7 @@ import { ExternalLink } from '../../components/ExternalLink';
 import DocumentationPage from '../../components/page/DocumentationPage';
 // @ts-ignore
 import maturityDetailsImg from '../../imgs/capability-level-diagram.svg';
-import { operatorSdk, gettingStarted, operatorsFramework } from '../../utils/documentationLinks';
+import { operatorSdk, gettingStarted, operatorsFrameworkRepo } from '../../utils/documentationLinks';
 import { InternalLink } from '../../components/InternalLink';
 import { History } from 'history';
 
@@ -116,7 +116,7 @@ const GettingStarted: React.FC<GettingStartedPageProps> = ({ history, ...props }
           </p>
           <p>
             Fortunately there is the <ExternalLink href={operatorSdk} text="operator-sdk" />, part of
-            the <ExternalLink href={operatorsFramework} text="Operator Framework" />, a community project that
+            the <ExternalLink href={operatorsFrameworkRepo} text="Operator Framework" />, a community project that
             aims at simplifying the whole process of Operator creation to just writing the custom operational logic
             inside the control loop.
           </p>

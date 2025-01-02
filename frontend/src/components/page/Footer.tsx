@@ -76,19 +76,19 @@ const Footer: React.FC<FooterProps> = ({ history, visible, ...props }) => (
               <h4 className="oh-footer__contents-right__links__list__header">NETWORK</h4>
               <ExternalLink
                 className="oh-footer__contents-right__links__list__link"
-                href={documentationLinks.hubTwitter}
-                text="Twitter"
+                href={documentationLinks.socialHubX}
+                text="X (Twitter)"
                 
               />
               <ExternalLink
                 className="oh-footer__contents-right__links__list__link"
-                href={documentationLinks.hubYoutube}
+                href={documentationLinks.socialHubYoutube}
                 text="YouTube"
                 
               />
               <ExternalLink
                 className="oh-footer__contents-right__links__list__link"
-                href={documentationLinks.operatorsFramework}
+                href={documentationLinks.operatorsFrameworkRepo}
                 text="GitHub"
                 
               />
@@ -100,7 +100,7 @@ const Footer: React.FC<FooterProps> = ({ history, visible, ...props }) => (
               />
               <ExternalLink
                 className="oh-footer__contents-right__links__list__link"
-                href={documentationLinks.kubernetesSlack}
+                href={documentationLinks.socialKubernetesSlack}
                 text="Join us on Slack"
                 
               />
