@@ -28,7 +28,7 @@ const CustomResourceDefinitionsView: React.FC<CustomResourceDefinitionsViewProps
       <div className="oh-crd-tile-view">
         {customResourceDefinitions.map(crd => (
           <div className="oh-crd-tile" key={crd.name}>
-            <div className="oh-crd-tile__title">{crd.displayName}</div>
+            <div className="oh-crd-tile__title">{crd.displayName} ({crd.version})</div>
             <div className="oh-crd-tile__rule" />
             <div className="oh-crd-tile__description">{crd.description}</div>
             {showExamples && (

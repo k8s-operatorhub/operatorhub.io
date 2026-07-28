@@ -83,10 +83,18 @@ class RulesEditor extends React.Component {
     if (selections.includes('*') && selections.length > 1) {
       const prevSelections = _.get(rule, field);
       if (prevSelections.includes('*')) {
-        this.updateRule(rule, field, _.filter(selections, selection => selection !== '*'));
+        this.updateRule(
+          rule,
+          field,
+          _.filter(selections, selection => selection !== '*')
+        );
         return;
       }
-      this.updateRule(rule, field, _.filter(selections, selection => selection === '*'));
+      this.updateRule(
+        rule,
+        field,
+        _.filter(selections, selection => selection === '*')
+      );
       return;
     }
 
